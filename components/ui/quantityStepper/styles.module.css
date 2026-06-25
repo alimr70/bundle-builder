@@ -1,0 +1,79 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 4px 0;
+  border-radius: var(--radius-md);
+}
+
+.rootCompact {
+  gap: 0;
+  width: 72px;
+}
+
+.group {
+  display: contents;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-gray-300);
+  background: var(--color-white);
+  color: var(--color-ink);
+  cursor: pointer;
+  padding: 0;
+}
+
+.button:hover:not(:disabled) {
+  background: var(--color-gray-200);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  background: var(--color-gray-200);
+  border-color: var(--color-gray-400);
+}
+
+.buttonActive {
+  background: var(--color-gray-200);
+  border-color: var(--color-gray-200);
+}
+
+.input {
+  width: 20px;
+  border: none;
+  background: transparent;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-ink);
+  padding: 0;
+  outline: none;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.inputCard {
+  font-size: 16px;
+  font-weight: 500;
+  width: 24px;
+}
+
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+.icon {
+  display: block;
+  width: 8px;
+  height: 8px;
+}

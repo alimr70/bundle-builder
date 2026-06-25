@@ -1,0 +1,143 @@
+.card {
+  display: flex;
+  gap: 19px;
+  align-items: center;
+  padding: 11px;
+  border-radius: var(--radius-2xl);
+  background: var(--color-white);
+  border: 2px solid transparent;
+  overflow: hidden;
+  height: 100%;
+}
+
+.cardSelected {
+  border-color: rgba(78, 47, 210, 0.7);
+}
+
+.media {
+  position: relative;
+  flex-shrink: 0;
+  width: 101px;
+  height: 137px;
+}
+
+.mediaTall {
+  height: 151px;
+}
+
+.mediaSquare {
+  width: 101px;
+  height: 101px;
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-white);
+}
+
+.image {
+  object-fit: contain;
+}
+
+.badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+}
+
+.learnMore {
+  color: var(--color-link);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@media (max-width: 1023px) {
+  .card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .media,
+  .mediaTall,
+  .mediaSquare {
+    width: 100%;
+    height: 140px;
+  }
+
+  .footer {
+    gap: 8px;
+  }
+
+  .footer [data-price-size="card"] {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 4px;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 639px) {
+  .card {
+    flex-direction: row;
+    align-items: center;
+    gap: 13px;
+  }
+
+  .media,
+  .mediaTall,
+  .mediaSquare {
+    width: 101px;
+    height: 137px;
+  }
+
+  .mediaTall {
+    height: 151px;
+  }
+
+  .mediaSquare {
+    width: 101px;
+    height: 101px;
+  }
+
+  .footer [data-price-size="card"] {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 3px;
+    white-space: normal;
+  }
+}

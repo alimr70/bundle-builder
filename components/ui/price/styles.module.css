@@ -1,0 +1,14 @@
+.price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+}
+
+.priceCard {
+  align-items: flex-end;
+}
+
+.free {
+  text-transform: uppercase;
+}

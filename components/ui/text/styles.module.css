@@ -1,0 +1,185 @@
+.eyebrow {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+}
+
+.stepTitle {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.panelTitle {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.6px;
+}
+
+.panelSubtitle {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: 0.6px;
+}
+
+.categoryLabel {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.36px;
+  text-transform: uppercase;
+}
+
+.cardTitle {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.6px;
+}
+
+.cardDesc {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: 0.6px;
+}
+
+.body {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0.07px;
+}
+
+.bodySemibold {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0.07px;
+}
+
+.priceCompare {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.6px;
+  text-decoration: line-through;
+}
+
+.priceCompareSm {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0.07px;
+  text-decoration: line-through;
+}
+
+.priceActive {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.6px;
+}
+
+.priceActiveSm {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0.07px;
+}
+
+.badge {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.savings {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.056px;
+}
+
+.total {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  letter-spacing: -0.03px;
+}
+
+.totalCompare {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.045px;
+  text-decoration: line-through;
+}
+
+.link {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.3;
+  text-decoration: underline;
+}
+
+.linkItalic {
+  font-size: 14px;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.2;
+  text-decoration: underline;
+  letter-spacing: -0.016px;
+}
+
+.mobileHeading {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.colorEyebrow {
+  color: var(--color-eyebrow);
+}
+
+.colorInk {
+  color: var(--color-ink);
+}
+
+.colorTitle {
+  color: var(--color-title);
+}
+
+.colorSubtitle {
+  color: var(--color-subtitle);
+}
+
+.colorMuted {
+  color: var(--color-gray-500);
+}
+
+.colorPurple {
+  color: var(--color-purple);
+}
+
+.colorDiscount {
+  color: var(--color-discount);
+}
+
+.colorGray {
+  color: var(--color-gray-800);
+}
+
+.colorGreen {
+  color: var(--color-green);
+}
+
+.colorWhite {
+  color: var(--color-white);
+}

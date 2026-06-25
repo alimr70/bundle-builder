@@ -1,0 +1,11 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}

@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bundle Builder
 
-## Getting Started
+A frontend take-home prototype: a multi-step Wyze security bundle builder with a live review panel.
 
-First, run the development server:
+## Run
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Stack
 
-## Learn More
+- **Next.js 16** (App Router) + **React 19**
+- **@base-ui/react** for Accordion, NumberField, ToggleGroup
+- **CSS Modules** for component styling + **Tailwind 4** for global tokens/reset
+- **Local JSON** catalog at [`data/catalog.json`](data/catalog.json)
 
-To learn more about Next.js, take a look at the following resources:
+## Architecture
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Feature-based layout:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `components/ui/` — variant-driven design system (`Text`, `Button`, `Badge`, `Price`, `QuantityStepper`)
+- `features/bundle-builder/` — builder state, accordion steps, product cards, review panel
+- `data/catalog.json` — products, steps, seed selections
+- `lib/storage.ts` — `localStorage` persistence
 
-## Deploy on Vercel
+## Decisions & tradeoffs
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Fonts:** Figma specifies Gilroy / TT Norms Pro (licensed). The app uses **Manrope** via `next/font` as a close substitute. Drop `.woff2` files into `app/fonts/` and switch `layout.tsx` to `next/font/local` for exact fidelity.
+- **Pricing:** Totals are **computed** from unit price × quantity (not the hand-set review line totals in Figma, which are internally inconsistent). Savings and financing (`total / 12`) derive from compare-at vs active prices.
+- **Persistence:** Configuration auto-saves to `localStorage` (`bundle-builder:v1`) on every change. "Save my system for later" shows a confirmation alert.
+- **Checkout:** Placeholder alert only (per BRD).
+- **Variant chip styling:** Selection behavior and per-variant quantities are implemented; active-chip visual polish is best-effort per BRD.
+- **Steps 2–4:** Product data for plan, sensors, and accessories is seeded from the review panel; step 2 plan card is minimal (no quantity control).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Interactions
+
+- Accordion steps (Step 1 open by default)
+- Per-variant quantities with synced card/review steppers
+- Live review panel with category grouping
+- Responsive layouts for desktop (≥1024px), tablet (640–1023px), and mobile (<640px)

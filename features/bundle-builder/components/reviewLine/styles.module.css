@@ -1,0 +1,45 @@
+.line {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.thumbnail {
+  position: relative;
+  width: 41px;
+  height: 41px;
+  flex-shrink: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-white);
+}
+
+.image {
+  object-fit: contain;
+}
+
+.name {
+  flex: 1;
+  min-width: 0;
+}
+
+.planName {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.planLogo {
+  width: 20px;
+  height: 24px;
+  object-fit: contain;
+}
