@@ -27,7 +27,7 @@
   --color-chip-border: #cccccc;
 
   /* Typography */
-  --font-sans: var(--font-manrope), system-ui, sans-serif;
+  --font-sans: var(--font-gilroy), var(--font-tt-norms), system-ui, sans-serif;
 
   /* Radii */
   --radius-sm: 2px;

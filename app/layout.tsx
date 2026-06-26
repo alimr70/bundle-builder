@@ -1,12 +1,23 @@
 import type { Metadata } from "next";
-import { Manrope } from "next/font/google";
+import localFont from "next/font/local";
 import { BundleProvider } from "@/features/bundle-builder/context/bundle-context";
 import "./globals.css";
 
-const manrope = Manrope({
-  variable: "--font-manrope",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+const gilroy = localFont({
+  src: [
+    { path: "./fonts/Gilroy/Gilroy-Regular.ttf", weight: "400", style: "normal" },
+    { path: "./fonts/Gilroy/Gilroy-Medium.ttf", weight: "500", style: "normal" },
+    { path: "./fonts/Gilroy/Gilroy-Bold.ttf", weight: "600", style: "normal" },
+    { path: "./fonts/Gilroy/Gilroy-Bold.ttf", weight: "700", style: "normal" },
+  ],
+  variable: "--font-gilroy",
+  display: "swap",
+});
+
+const ttNormsPro = localFont({
+  src: "./fonts/tt-norms-pro/Variable/TTNormsProVariable.ttf",
+  variable: "--font-tt-norms",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -21,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${manrope.variable} h-full antialiased`}>
+    <html lang="en" className={`${gilroy.variable} ${ttNormsPro.variable} h-full antialiased`}>
       <body className="min-h-full">
         <BundleProvider>{children}</BundleProvider>
       </body>
