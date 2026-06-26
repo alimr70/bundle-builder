@@ -9,6 +9,15 @@
   align-items: flex-end;
 }
 
+@media (max-width: 1023px) {
+  .price {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 4px;
+    white-space: nowrap;
+  }
+}
+
 .free {
   text-transform: uppercase;
 }

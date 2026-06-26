@@ -32,6 +32,12 @@
   min-width: 0;
 }
 
+@media (min-width: 1024px) {
+  .name {
+    max-width: 158px;
+  }
+}
+
 .planName {
   display: flex;
   align-items: center;

@@ -2,7 +2,7 @@
   width: 100%;
   max-width: var(--max-content);
   margin: 0 auto;
-  padding: 49px 16px 40px;
+  padding-block: 49.36px;
 }
 
 .mobileHeading {

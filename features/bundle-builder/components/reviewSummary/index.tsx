@@ -3,46 +3,19 @@
 import { AppImage } from "@/components/ui/appImage";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Price } from "@/components/ui/price";
 import { Text } from "@/components/ui/text";
 import { useBundle } from "@/features/bundle-builder/hooks/use-bundle";
 import {
   formatCurrency,
   formatMonthly,
-  getCatalog,
 } from "@/features/bundle-builder/lib/pricing";
 import styles from "./styles.module.css";
-
-const catalog = getCatalog();
 
 export const ReviewSummary = () => {
   const { pricing, saveForLater, handleCheckout } = useBundle();
 
   return (
     <div className={styles.summary}>
-      <div className={styles.shippingRow}>
-        <div className={styles.shippingMain}>
-          <div className={styles.shippingIconWrap}>
-            <AppImage
-              src={catalog.shipping.icon}
-              alt=""
-              width={29}
-              height={29}
-              className={styles.shippingIcon}
-            />
-          </div>
-          <Text variant="body" color="ink">
-            {catalog.shipping.name}
-          </Text>
-        </div>
-        <Price
-          price={0}
-          compareAt={catalog.shipping.compareAt}
-          isFree={catalog.shipping.isFree}
-          size="review"
-        />
-      </div>
-
       <div className={styles.totalsRow}>
         <AppImage
           src="/assets/satisfaction-badge.png"

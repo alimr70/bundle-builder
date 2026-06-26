@@ -5,6 +5,7 @@ import {
   ReviewCategory,
   categoryTitleMap,
 } from "@/features/bundle-builder/components/reviewCategory";
+import { ReviewShippingLine } from "@/features/bundle-builder/components/reviewShippingLine";
 import { ReviewSummary } from "@/features/bundle-builder/components/reviewSummary";
 import { useBundle } from "@/features/bundle-builder/hooks/use-bundle";
 import { getLineItemsByCategory } from "@/features/bundle-builder/lib/selectors";
@@ -37,16 +38,16 @@ export const ReviewPanel = () => {
             Review your personalized protection system designed to keep what
             matters most safe.
           </Text>
-        </div>
-
-        <div className={styles.categories}>
-          {categoryOrder.map((category) => (
-            <ReviewCategory
-              key={category}
-              title={categoryTitleMap[category]}
-              items={grouped[category]}
-            />
-          ))}
+          <div className={styles.categories}>
+            {categoryOrder.map((category) => (
+              <ReviewCategory
+                key={category}
+                title={categoryTitleMap[category]}
+                items={grouped[category]}
+              />
+            ))}
+            <ReviewShippingLine />
+          </div>
         </div>
 
         <div className={styles.summaryColumn}>

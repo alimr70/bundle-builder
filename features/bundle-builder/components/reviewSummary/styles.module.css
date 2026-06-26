@@ -27,8 +27,17 @@
 
 .priceRow {
   display: flex;
-  align-items: baseline;
-  gap: 8px;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+}
+
+@media (max-width: 1023px) {
+  .priceRow {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 8px;
+  }
 }
 
 .actions {
@@ -44,34 +53,4 @@
 
 .saveLink {
   text-align: center;
-}
-
-.shippingRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
-
-.shippingMain {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex: 1;
-}
-
-.shippingIconWrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 41px;
-  height: 41px;
-  border-radius: var(--radius-lg);
-  background: var(--color-white);
-}
-
-.shippingIcon {
-  width: 29px;
-  height: 29px;
-  object-fit: contain;
 }

@@ -87,11 +87,7 @@ export const StepAccordionItem = ({ step }: StepAccordionItemProps) => {
 
       <Accordion.Panel className={styles.panel}>
         <div className={styles.panelInner}>
-          <div
-            className={cn(
-              styles.productGrid,
-              step.id === "step-1" && styles.productGridWide,
-            )}>
+          <div className={styles.productGrid}>
             {products.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}

@@ -113,7 +113,7 @@
 @media (min-width: 768px) and (max-width: 1023px) {
   .productGrid,
   .productGridWide {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .fullWidthCard {
