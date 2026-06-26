@@ -50,11 +50,9 @@ export const StepAccordionItem = ({ step }: StepAccordionItemProps) => {
     <Accordion.Item
       value={step.id}
       className={cn(styles.step, isOpen && styles.stepExpanded)}>
-      <div className={styles.eyebrowRow}>
-        <Text variant='eyebrow' color='eyebrow'>
-          Step {step.number} of 4
-        </Text>
-      </div>
+      <Text variant='eyebrow' color='eyebrow' className={styles.eyebrowRow}>
+        Step {step.number} of 4
+      </Text>
 
       <Accordion.Header>
         <Accordion.Trigger
@@ -94,16 +92,8 @@ export const StepAccordionItem = ({ step }: StepAccordionItemProps) => {
               styles.productGrid,
               step.id === "step-1" && styles.productGridWide,
             )}>
-            {products.map((product, index) => (
-              <div
-                key={product.id}
-                className={cn(
-                  step.id === "step-1" &&
-                    index === products.length - 1 &&
-                    styles.fullWidthCard,
-                )}>
-                <ProductCard product={product} />
-              </div>
+            {products.map((product) => (
+              <ProductCard key={product.id} product={product} />
             ))}
           </div>
 

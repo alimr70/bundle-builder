@@ -24,23 +24,21 @@ export const ReviewPanel = () => {
 
   return (
     <aside className={styles.panel}>
-      <div className={styles.eyebrow}>
-        <Text variant="eyebrow" color="eyebrow">
-          Review
-        </Text>
-      </div>
-
-      <div className={styles.intro}>
-        <Text variant="panelTitle" color="title">
-          Your security system
-        </Text>
-        <Text variant="panelSubtitle" color="subtitle" as="p">
-          Review your personalized protection system designed to keep what
-          matters most safe.
-        </Text>
-      </div>
+      <Text variant='eyebrow' color='eyebrow' className={styles.eyebrow}>
+        Review
+      </Text>
 
       <div className={styles.body}>
+        <div className={styles.intro}>
+          <Text variant='panelTitle' color='title'>
+            Your security system
+          </Text>
+          <Text variant='panelSubtitle' color='subtitle' as='p'>
+            Review your personalized protection system designed to keep what
+            matters most safe.
+          </Text>
+        </div>
+
         <div className={styles.categories}>
           {categoryOrder.map((category) => (
             <ReviewCategory

@@ -31,7 +31,7 @@ export const ReviewLine = ({ quantityKey, quantity }: ReviewLineProps) => {
   const lineCompareAt = product.compareAt
     ? product.compareAt * quantity
     : undefined;
-  const minQuantity = product.minQuantity ?? 0;
+  const minQuantity = product.isFree ? 0 : (product.minQuantity ?? 0);
   const isPlan = product.category === "Plan";
 
   return (
@@ -75,7 +75,12 @@ export const ReviewLine = ({ quantityKey, quantity }: ReviewLineProps) => {
             min={minQuantity}
             size="compact"
             onChange={(nextQuantity) => setQuantity(quantityKey, nextQuantity)}
-            disabled={product.required && quantity <= minQuantity && minQuantity > 0}
+            disabled={
+              !product.isFree &&
+              product.required &&
+              quantity <= minQuantity &&
+              minQuantity > 0
+            }
           />
         )}
       </div>

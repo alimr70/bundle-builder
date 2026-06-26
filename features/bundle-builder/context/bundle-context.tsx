@@ -61,10 +61,7 @@ const bundleReducer = (
         },
       };
     case "SET_QUANTITY": {
-      const [productId] = action.payload.key.split(":");
-      const product = catalogData.products.find((item) => item.id === productId);
-      const minQuantity = product?.minQuantity ?? 0;
-      const nextQuantity = Math.max(action.payload.quantity, minQuantity);
+      const nextQuantity = Math.max(action.payload.quantity, 0);
 
       return {
         ...state,

@@ -11,7 +11,7 @@
 }
 
 .eyebrowRow {
-  padding: 0 15px;
+  padding-inline: 15px;
 }
 
 .header {
@@ -75,6 +75,7 @@
 .panelInner {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 15px;
   padding: 15px 15px 20px;
 }
@@ -88,12 +89,6 @@
 .productGridWide {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
-
-.fullWidthCard {
-  grid-column: 1 / -1;
-  max-width: 360px;
-}
-
 .nextButtonWrap {
   display: flex;
   justify-content: flex-end;

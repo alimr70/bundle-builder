@@ -35,14 +35,7 @@
     "icon": "/assets/icon-delivery.svg"
   },
   "financingMonths": 12,
-  "seedSelections": [
-    { "productId": "wyze-cam-v4", "variantId": "white", "quantity": 1 },
-    { "productId": "wyze-cam-pan-v3", "variantId": "white", "quantity": 2 },
-    { "productId": "wyze-sense-motion-sensor", "quantity": 2 },
-    { "productId": "wyze-sense-hub", "quantity": 1 },
-    { "productId": "wyze-microsd-256gb", "quantity": 2 },
-    { "productId": "cam-unlimited-plan", "quantity": 1 }
-  ],
+  "seedSelections": [],
   "products": [
     {
       "id": "wyze-cam-v4",
