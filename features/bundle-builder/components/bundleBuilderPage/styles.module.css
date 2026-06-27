@@ -37,7 +37,7 @@
   }
 }
 
-@media (max-width: 639px) {
+@media (max-width: 767px) {
   .page {
     padding-top: 24px;
   }
@@ -47,7 +47,7 @@
   }
 }
 
-@media (min-width: 786px) and (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 1023px) {
   .layout {
     gap: 20px;
   }

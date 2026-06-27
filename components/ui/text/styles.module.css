@@ -13,7 +13,7 @@
   letter-spacing: 0;
 }
 
-@media (max-width: 639px) {
+@media (max-width: 767px) {
   .eyebrow {
     font-size: 10px;
   }

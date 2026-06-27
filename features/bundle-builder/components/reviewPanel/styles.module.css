@@ -31,7 +31,7 @@
   gap: 10px;
 }
 
-@media (min-width: 786px) and (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 1023px) {
   .body {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 0.7fr);
@@ -45,7 +45,7 @@
   }
 }
 
-@media (max-width: 639px) {
+@media (max-width: 767px) {
   .panel {
     padding: 15px 12px 24px;
   }

@@ -49,7 +49,7 @@
   }
 }
 
-@media (min-width: 786px) and (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 1023px) {
   .totalsRow {
     flex-direction: column;
     align-items: stretch;

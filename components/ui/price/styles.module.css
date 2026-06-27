@@ -9,7 +9,7 @@
   align-items: flex-end;
 }
 
-@media (min-width: 786px) and (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 1023px) {
   .price {
     flex-direction: row;
     align-items: baseline;

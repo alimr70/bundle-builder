@@ -101,6 +101,20 @@ export const createInitialActiveVariants = (): Record<string, string> => {
   return activeVariant;
 };
 
+export const getInitialBundleState = (
+  saved?: BundleState | null,
+): BundleState => {
+  if (saved) {
+    return normalizeBundleState(saved);
+  }
+
+  return {
+    quantities: createInitialQuantities(),
+    activeVariant: createInitialActiveVariants(),
+    openStep: catalog.steps[0]?.id ?? "step-1",
+  };
+};
+
 export const normalizeBundleState = (saved: BundleState): BundleState => {
   const quantities = { ...createInitialQuantities(), ...saved.quantities };
 

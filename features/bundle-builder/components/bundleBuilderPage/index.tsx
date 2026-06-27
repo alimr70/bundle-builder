@@ -1,5 +1,3 @@
-"use client";
-
 import { Text } from "@/components/ui/text";
 import { BuilderPanel } from "@/features/bundle-builder/components/builderPanel";
 import { ReviewPanel } from "@/features/bundle-builder/components/reviewPanel";

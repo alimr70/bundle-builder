@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
-import { BundleProvider } from "@/features/bundle-builder/context/bundle-context";
 import "./globals.css";
 
 const gilroy = localFont({
@@ -72,9 +71,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${gilroy.variable} ${ttNormsPro.variable} h-full antialiased`}>
-      <body className="min-h-full">
-        <BundleProvider>{children}</BundleProvider>
-      </body>
+      <body className="min-h-full">{children}</body>
     </html>
   );
 }
