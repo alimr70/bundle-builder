@@ -1,6 +1,6 @@
 .line {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 16px;
 }
@@ -8,6 +8,7 @@
 .main {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 12px;
   flex: 1;
   min-width: 0;
@@ -29,7 +30,7 @@
 
 .name {
   flex: 1;
-  min-width: 0;
+  min-width: 120px;
 }
 
 @media (min-width: 1024px) {

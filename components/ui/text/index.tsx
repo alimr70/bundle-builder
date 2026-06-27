@@ -20,6 +20,8 @@ export type TextVariant =
   | "savings"
   | "total"
   | "totalCompare"
+  | "returnTitle"
+  | "returnBody"
   | "link"
   | "linkItalic"
   | "mobileHeading";

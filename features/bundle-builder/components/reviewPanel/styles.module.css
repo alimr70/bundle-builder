@@ -34,7 +34,7 @@
 @media (min-width: 640px) and (max-width: 1023px) {
   .body {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(280px, 340px);
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 486px);
     gap: 24px;
     align-items: start;
   }

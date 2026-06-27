@@ -11,6 +11,10 @@
   gap: 16px;
 }
 
+.returnsRow {
+  flex-shrink: 0;
+}
+
 .badge {
   width: 78px;
   height: 78px;
@@ -18,11 +22,16 @@
   flex-shrink: 0;
 }
 
-.totals {
+.returnsInfo {
+  display: none;
+}
+
+.pricingRow {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: 8px;
+  flex: 1;
 }
 
 .priceRow {
@@ -37,6 +46,39 @@
     flex-direction: row;
     align-items: baseline;
     gap: 8px;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .totalsRow {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .returnsRow {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+  }
+
+  .badge {
+    width: 131px;
+    height: 131px;
+  }
+
+  .returnsInfo {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 330px;
+  }
+
+  .pricingRow {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex: none;
   }
 }
 
