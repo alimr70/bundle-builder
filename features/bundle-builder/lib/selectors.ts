@@ -1,5 +1,9 @@
 import { getCatalog } from "@/features/bundle-builder/lib/pricing";
-import type { Product, ProductCategory } from "@/features/bundle-builder/types";
+import type {
+  BundleState,
+  Product,
+  ProductCategory,
+} from "@/features/bundle-builder/types";
 import { getQuantityKey } from "@/features/bundle-builder/types";
 
 const catalog = getCatalog();
@@ -95,6 +99,34 @@ export const createInitialActiveVariants = (): Record<string, string> => {
   });
 
   return activeVariant;
+};
+
+export const normalizeBundleState = (saved: BundleState): BundleState => {
+  const quantities = { ...createInitialQuantities(), ...saved.quantities };
+
+  catalog.seedSelections.forEach((selection) => {
+    const key = getQuantityKey(selection.productId, selection.variantId);
+    quantities[key] = Math.max(quantities[key] ?? 0, selection.quantity);
+  });
+
+  catalog.products.forEach((product) => {
+    if (product.required && product.minQuantity) {
+      const key = getQuantityKey(product.id);
+      quantities[key] = Math.max(quantities[key] ?? 0, product.minQuantity);
+    }
+  });
+
+  const defaultOpenStep = catalog.steps[0]?.id ?? "step-1";
+  const isValidOpenStep = catalog.steps.some((step) => step.id === saved.openStep);
+
+  return {
+    quantities,
+    activeVariant: {
+      ...createInitialActiveVariants(),
+      ...saved.activeVariant,
+    },
+    openStep: isValidOpenStep ? saved.openStep : defaultOpenStep,
+  };
 };
 
 export const getNextStepId = (currentStepId: string): string | null => {

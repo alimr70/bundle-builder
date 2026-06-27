@@ -7,6 +7,7 @@ import {
   useMemo,
   useReducer,
   useRef,
+  useState,
   type ReactNode,
 } from "react";
 import catalog from "@/data/catalog.json";
@@ -17,6 +18,7 @@ import {
   getNextStepId,
   getProductsByStep,
   getSelectedCountForStep,
+  normalizeBundleState,
 } from "@/features/bundle-builder/lib/selectors";
 import type {
   BundleState,
@@ -25,17 +27,16 @@ import type {
   Product,
 } from "@/features/bundle-builder/types";
 import { getQuantityKey } from "@/features/bundle-builder/types";
-import { getStorageItem, setStorageItem } from "@/lib/storage";
+import { fetchSavedBundle, saveBundle } from "@/lib/bundle-api";
 
-const STORAGE_KEY = "bundle-builder:v1";
+const AUTO_SAVE_DELAY_MS = 500;
 const catalogData = catalog as Catalog;
 
 type BundleAction =
   | { type: "HYDRATE"; payload: BundleState }
   | { type: "SET_OPEN_STEP"; payload: string }
   | { type: "SET_ACTIVE_VARIANT"; payload: { productId: string; variantId: string } }
-  | { type: "SET_QUANTITY"; payload: { key: string; quantity: number } }
-  | { type: "SAVE_FOR_LATER" };
+  | { type: "SET_QUANTITY"; payload: { key: string; quantity: number } };
 
 const createInitialState = (): BundleState => ({
   quantities: createInitialQuantities(),
@@ -49,7 +50,7 @@ const bundleReducer = (
 ): BundleState => {
   switch (action.type) {
     case "HYDRATE":
-      return action.payload;
+      return normalizeBundleState(action.payload);
     case "SET_OPEN_STEP":
       return { ...state, openStep: action.payload };
     case "SET_ACTIVE_VARIANT":
@@ -74,9 +75,6 @@ const bundleReducer = (
         },
       };
     }
-    case "SAVE_FOR_LATER":
-      setStorageItem(STORAGE_KEY, state);
-      return state;
     default:
       return state;
   }
@@ -85,6 +83,7 @@ const bundleReducer = (
 type BundleContextValue = {
   readonly state: BundleState;
   readonly pricing: PricingSummary;
+  readonly isHydrating: boolean;
   readonly setOpenStep: (stepId: string) => void;
   readonly goToNextStep: (currentStepId: string) => void;
   readonly setActiveVariant: (productId: string, variantId: string) => void;
@@ -105,23 +104,50 @@ const BundleContext = createContext<BundleContextValue | null>(null);
 
 export const BundleProvider = ({ children }: { readonly children: ReactNode }) => {
   const [state, dispatch] = useReducer(bundleReducer, undefined, createInitialState);
-  const isInitialMountRef = useRef(true);
+  const [isHydrating, setIsHydrating] = useState(true);
+  const skipAutoSaveRef = useRef(true);
 
   useEffect(() => {
-    const saved = getStorageItem<BundleState>(STORAGE_KEY);
-    if (saved) {
-      dispatch({ type: "HYDRATE", payload: saved });
-    }
+    let isMounted = true;
+
+    const hydrateFromServer = async (): Promise<void> => {
+      try {
+        const saved = await fetchSavedBundle();
+        if (saved && isMounted) {
+          dispatch({ type: "HYDRATE", payload: saved });
+        }
+      } catch (error) {
+        console.error("Failed to hydrate bundle from server:", error);
+      } finally {
+        if (isMounted) {
+          skipAutoSaveRef.current = false;
+          setIsHydrating(false);
+        }
+      }
+    };
+
+    void hydrateFromServer();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   useEffect(() => {
-    if (isInitialMountRef.current) {
-      isInitialMountRef.current = false;
+    if (skipAutoSaveRef.current || isHydrating) {
       return;
     }
 
-    setStorageItem(STORAGE_KEY, state);
-  }, [state]);
+    const timeoutId = window.setTimeout(() => {
+      void saveBundle(state).catch((error) => {
+        console.error("Failed to auto-save bundle:", error);
+      });
+    }, AUTO_SAVE_DELAY_MS);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [state, isHydrating]);
 
   const pricing = useMemo(
     () => calculatePricingSummary(state.quantities),
@@ -132,6 +158,7 @@ export const BundleProvider = ({ children }: { readonly children: ReactNode }) =
     () => ({
       state,
       pricing,
+      isHydrating,
       setOpenStep: (stepId) => dispatch({ type: "SET_OPEN_STEP", payload: stepId }),
       goToNextStep: (currentStepId) => {
         const nextStepId = getNextStepId(currentStepId);
@@ -164,15 +191,25 @@ export const BundleProvider = ({ children }: { readonly children: ReactNode }) =
         getSelectedCountForStep(stepId, state.quantities),
       getStepProducts: (stepId) => getProductsByStep(stepId),
       saveForLater: () => {
-        setStorageItem(STORAGE_KEY, state);
-        window.alert("Your system has been saved. Come back anytime!");
+        void saveBundle(state)
+          .then(() => {
+            window.alert("Your system has been saved. Come back anytime!");
+          })
+          .catch((error) => {
+            console.error("Failed to save bundle:", error);
+            window.alert("Unable to save your system. Please try again.");
+          });
       },
       handleCheckout: () => {
         window.alert("Checkout is a placeholder in this prototype.");
       },
     }),
-    [state, pricing],
+    [state, pricing, isHydrating],
   );
+
+  if (isHydrating) {
+    return null;
+  }
 
   return (
     <BundleContext.Provider value={value}>{children}</BundleContext.Provider>
