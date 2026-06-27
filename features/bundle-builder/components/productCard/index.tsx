@@ -29,7 +29,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
   const quantity = getProductQuantity(product);
   const isSelected = quantity > 0;
   const quantityKey = getQuantityKey(product.id, activeVariantId);
-  const minQuantity = product.isFree ? 0 : (product.minQuantity ?? 0);
+  const minQuantity = product.minQuantity ?? 0;
 
   const handleQuantityChange = (nextQuantity: number): void => {
     setQuantity(quantityKey, nextQuantity);
@@ -91,12 +91,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
               value={quantity}
               min={minQuantity}
               onChange={handleQuantityChange}
-              disabled={
-                !product.isFree &&
-                product.required &&
-                quantity <= minQuantity &&
-                minQuantity > 0
-              }
+              disabled={product.required && quantity <= minQuantity && minQuantity > 0}
               size="card"
             />
           )}

@@ -63,15 +63,34 @@ export const getLineItemsByCategory = (
   return grouped;
 };
 
-export const createInitialQuantities = (): Record<string, number> => ({});
+export const createInitialQuantities = (): Record<string, number> => {
+  const quantities: Record<string, number> = {};
+
+  catalog.seedSelections.forEach((selection) => {
+    const key = getQuantityKey(selection.productId, selection.variantId);
+    quantities[key] = selection.quantity;
+  });
+
+  catalog.products.forEach((product) => {
+    if (product.required && product.minQuantity) {
+      const key = getQuantityKey(product.id);
+      quantities[key] = Math.max(quantities[key] ?? 0, product.minQuantity);
+    }
+  });
+
+  return quantities;
+};
 
 export const createInitialActiveVariants = (): Record<string, string> => {
   const activeVariant: Record<string, string> = {};
 
   catalog.products.forEach((product) => {
     if (product.variants && product.variants.length > 0) {
+      const seeded = catalog.seedSelections.find(
+        (selection) => selection.productId === product.id && selection.variantId,
+      );
       activeVariant[product.id] =
-        product.defaultVariantId ?? product.variants[0].id;
+        seeded?.variantId ?? product.defaultVariantId ?? product.variants[0].id;
     }
   });
 

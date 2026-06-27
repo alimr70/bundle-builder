@@ -98,7 +98,7 @@
   display: none;
 }
 
-@media (min-width: 640px) and (max-width: 767px) {
+@media (min-width: 786px) and (max-width: 767px) {
   .productGrid,
   .productGridWide {
     grid-template-columns: repeat(3, minmax(0, 1fr));

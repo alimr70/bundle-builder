@@ -31,10 +31,10 @@
   gap: 10px;
 }
 
-@media (min-width: 640px) and (max-width: 1023px) {
+@media (min-width: 786px) and (max-width: 1023px) {
   .body {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(280px, 486px);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.7fr);
     gap: 24px;
     align-items: start;
   }

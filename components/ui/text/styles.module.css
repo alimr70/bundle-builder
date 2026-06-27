@@ -13,6 +13,16 @@
   letter-spacing: 0;
 }
 
+@media (max-width: 639px) {
+  .eyebrow {
+    font-size: 10px;
+  }
+
+  .stepTitle {
+    font-size: 18px;
+  }
+}
+
 .panelTitle {
   font-size: 22px;
   font-weight: 600;
@@ -100,10 +110,10 @@
 }
 
 .savings {
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 12px;
+  font-weight: 600;
   line-height: 1;
-  letter-spacing: -0.06px;
+  letter-spacing: -0.056px;
 }
 
 .total {

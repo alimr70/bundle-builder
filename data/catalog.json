@@ -35,7 +35,10 @@
     "icon": "/assets/icon-delivery.svg"
   },
   "financingMonths": 12,
-  "seedSelections": [],
+  "seedSelections": [
+    { "productId": "wyze-sense-hub", "quantity": 1 },
+    { "productId": "cam-unlimited-plan", "quantity": 1 }
+  ],
   "products": [
     {
       "id": "wyze-cam-v4",
@@ -48,9 +51,21 @@
       "price": 27.98,
       "compareAt": 35.98,
       "variants": [
-        { "id": "white", "label": "White", "swatch": "/assets/wyze-cam-v4-white.png" },
-        { "id": "grey", "label": "Grey", "swatch": "/assets/wyze-cam-v4-grey.png" },
-        { "id": "black", "label": "Black", "swatch": "/assets/wyze-cam-v4-black.png" }
+        {
+          "id": "white",
+          "label": "White",
+          "swatch": "/assets/wyze-cam-v4-white.png"
+        },
+        {
+          "id": "grey",
+          "label": "Grey",
+          "swatch": "/assets/wyze-cam-v4-grey.png"
+        },
+        {
+          "id": "black",
+          "label": "Black",
+          "swatch": "/assets/wyze-cam-v4-black.png"
+        }
       ],
       "defaultVariantId": "white",
       "controls": "stepper",
@@ -68,8 +83,16 @@
       "price": 34.98,
       "compareAt": 39.98,
       "variants": [
-        { "id": "white", "label": "White", "swatch": "/assets/wyze-cam-pan-white.png" },
-        { "id": "black", "label": "Black", "swatch": "/assets/wyze-cam-pan-black.png" }
+        {
+          "id": "white",
+          "label": "White",
+          "swatch": "/assets/wyze-cam-pan-white.png"
+        },
+        {
+          "id": "black",
+          "label": "Black",
+          "swatch": "/assets/wyze-cam-pan-black.png"
+        }
       ],
       "defaultVariantId": "white",
       "controls": "stepper",
@@ -87,8 +110,16 @@
       "price": 69.98,
       "compareAt": 89.98,
       "variants": [
-        { "id": "white", "label": "White", "swatch": "/assets/wyze-cam-floodlight-white.png" },
-        { "id": "black", "label": "Black", "swatch": "/assets/wyze-cam-floodlight-black.png" }
+        {
+          "id": "white",
+          "label": "White",
+          "swatch": "/assets/wyze-cam-floodlight-white.png"
+        },
+        {
+          "id": "black",
+          "label": "Black",
+          "swatch": "/assets/wyze-cam-floodlight-black.png"
+        }
       ],
       "defaultVariantId": "white",
       "controls": "stepper",
@@ -118,8 +149,16 @@
       "price": 89.98,
       "compareAt": 114.98,
       "variants": [
-        { "id": "white", "label": "White", "swatch": "/assets/wyze-battery-cam-pro-white.png" },
-        { "id": "black", "label": "Black", "swatch": "/assets/wyze-battery-cam-pro-black.png" }
+        {
+          "id": "white",
+          "label": "White",
+          "swatch": "/assets/wyze-battery-cam-pro-white.png"
+        },
+        {
+          "id": "black",
+          "label": "Black",
+          "swatch": "/assets/wyze-battery-cam-pro-black.png"
+        }
       ],
       "defaultVariantId": "white",
       "controls": "stepper",
